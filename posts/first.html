@@ -12,13 +12,24 @@
         <div class="navbar">
             <img src="../images/logo.png" alt="Logo" class="logo">
             <h1>MUTEX</h1>
-            <nav>
+            <nav class="desktop-nav">
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Posts</a></li>
                 </ul>
             </nav>
+            <!-- 모바일 메뉴 버튼 -->
+            <div class="mobile-menu-button" onclick="toggleMobileMenu()">
+                &#9776; <!-- 햄버거 메뉴 아이콘 -->
+            </div>
         </div>
+        <!-- 모바일 슬라이드 메뉴 -->
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Posts</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Main Content -->
@@ -33,6 +44,33 @@
                 <p>This is a sample blog post content. Markdown-styled text would go here.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. Donec rutrum sed sem quis venenatis.</p>
                 <!-- Add more paragraphs or sections as needed -->
+
+                <!-- 배너 슬라이더 -->
+                <div class="banner-container">
+                    <div class="banner-slide fade">
+                        <img src="../images/banner1.jpg" alt="Banner 1">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <div class="banner-slide fade">
+                        <img src="../images/banner2.jpg" alt="Banner 2">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <div class="banner-slide fade">
+                        <img src="../images/banner3.jpg" alt="Banner 3">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <div class="banner-slide fade">
+                        <img src="../images/banner4.jpg" alt="Banner 3">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <!-- 순번을 표시하는 동그라미들 -->
+                    <div class="banner-dots">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                    </div>
+                </div>
             </article>
 
             <aside class="right-sidebar">
