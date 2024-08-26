@@ -1,0 +1,123 @@
+/* Basic reset and typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Viewport height 만큼의 최소 높이 */
+}
+
+/* Main Contents */
+main {
+    flex: 1; /* main이 남은 공간을 채우도록 설정 */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    height: 40px;
+}
+
+.navbar h1 {
+    color: white;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+}
+
+.navbar ul li a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+/* Main content layout */
+.content-container {
+    display: flex;
+    justify-content: center;
+    padding: 80px 20px 20px 20px; /* Padding to account for the fixed navbar */
+}
+
+.left-sidebar, .right-sidebar {
+    flex: 1;
+    padding: 20px;
+}
+
+.post-content {
+    flex: 3;
+    max-width: 800px; /* Limit width for readability */
+    margin: 0 20px;
+}
+
+/* Right sidebar with background image */
+.right-sidebar {
+    background: url('../images/background.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.right-sidebar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
+}
+
+.profile-info {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: rgb(137, 137, 137);
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
