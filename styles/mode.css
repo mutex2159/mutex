@@ -1,0 +1,25 @@
+/* mode.css */
+/* 다크 모드 스타일 */
+body.dark-mode {
+    background-color: #1c1c1c;
+    color: #f5f5f5;
+}
+
+.navbar.dark-mode {
+    background-color: #222;
+}
+
+.footer.dark-mode {
+    background-color: #222;
+}
+
+.desktop-nav ul li a.dark-mode,
+.mobile-nav ul li a.dark-mode {
+    color: #f5f5f5;
+}
+
+.banner-overlay.dark-mode {
+    background-color: rgba(0, 0, 0, 0.7); /* 좀 더 진한 검은색 레이어 */
+}
+
+/* 다른 요소들에 필요한 다크 모드 스타일을 추가 */

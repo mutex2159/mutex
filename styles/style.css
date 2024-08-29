@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Basic reset and typography */
 * {
     margin: 0;
@@ -139,6 +146,63 @@ main {
     }
 }
 
+/* 모드 전환 버튼 - 데스크탑 */
+/* 모바일 버전 토글 버튼을 기본적으로 숨기기 */
+#modeToggleMobile {
+    display: none; /* 기본적으로 숨김 */
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.mobile-menu-button-container {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-menu-button-container img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle; /* 이미지가 버튼 중앙에 오도록 설정 */
+}
+
+/* 데스크탑 모드에서의 스타일 설정 */
+.desktop-mode-toggle {
+    display: inline-block; /* 데스크탑에서만 보이기 */
+}
+
+.desktop-mode-toggle button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.desktop-mode-toggle button:hover {
+    background-color: #575757;
+}
+
+.desktop-mode-toggle img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle; /* 이미지가 버튼 중앙에 오도록 설정 */
+}
+
+/* 미디어 쿼리 (모바일용) */
+@media (max-width: 768px) {
+    .desktop-mode-toggle {
+        display: none; /* 모바일에서는 숨기기 */
+    }
+
+    #modeToggleMobile {
+        display: inline-block; /* 모바일에서만 보이기 */
+    }
+}
+
 
 /* Main content layout */
 .content-container {
@@ -153,9 +217,14 @@ main {
 }
 
 .post-content {
+    font-family: 'omyu_pretty', sans-serif;
     flex: 3;
     max-width: 800px; /* Limit width for readability */
     margin: 0 20px;
+}
+
+.post-content h1{
+    font-size: 24pt;
 }
 
 /* Right sidebar with background image */
