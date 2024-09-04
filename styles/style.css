@@ -40,7 +40,6 @@ main {
 /* Navbar styling */
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: #333;
     padding: 10px 20px;
@@ -56,6 +55,13 @@ main {
 
 .navbar h1 {
     color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.desktop-nav {
+    margin-left: auto;
 }
 
 .desktop-nav ul {
@@ -150,7 +156,7 @@ main {
 /* 모바일 버전 토글 버튼을 기본적으로 숨기기 */
 #modeToggleMobile {
     display: none; /* 기본적으로 숨김 */
-    background-color: #333;
+    background: none;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -175,7 +181,7 @@ main {
 }
 
 .desktop-mode-toggle button {
-    background-color: #333;
+    background: none;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -196,13 +202,18 @@ main {
 @media (max-width: 768px) {
     .desktop-mode-toggle {
         display: none; /* 모바일에서는 숨기기 */
+        margin-left: 0;
     }
+
+    .mobile-menu-button-container{
+        margin-left: auto;
+    }
+
 
     #modeToggleMobile {
         display: inline-block; /* 모바일에서만 보이기 */
     }
 }
-
 
 /* Main content layout */
 .content-container {
@@ -219,6 +230,7 @@ main {
 .post-content {
     font-family: 'omyu_pretty', sans-serif;
     flex: 3;
+    min-width: 50vw;
     max-width: 800px; /* Limit width for readability */
     margin: 0 20px;
 }
@@ -232,6 +244,7 @@ main {
     background: url('../images/background.jpg') no-repeat center center;
     background-size: cover;
     position: relative;
+    height: 70vh;
 }
 
 .right-sidebar::before {
@@ -248,6 +261,18 @@ main {
     position: relative;
     z-index: 1;
     color: white;
+}
+
+
+.post-header-lang{
+    text-align: right;
+    padding-right: 20px;
+}
+
+.post-header-lang  img{
+    cursor:pointer; 
+    width:30px; 
+    height:auto;
 }
 
 /* 배너 컨테이너 */

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUTEX</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/mode.css">
+    <link rel="stylesheet" href="styles/list.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="navbar">
+            <img src="images/logo.png" alt="Logo" class="logo">
+            <h1>MUTEX</h1>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Posts</a></li>
+                </ul>
+            </nav>
+            <div class="desktop-mode-toggle">
+                <button id="modeToggle" onclick="toggleMode()">
+                    <img src="images/light-dark.png" alt="light-dark">
+                </button>
+            </div>
+            <!-- 모바일 메뉴 버튼 -->
+            <div class="mobile-menu-button-container">
+                <button id="modeToggleMobile" onclick="toggleMode()">
+                    <img src="images/light-dark.png" alt="light-dark">
+                </button>
+                <div class="mobile-menu-button" onclick="toggleMobileMenu()">
+                    &#9776; <!-- 햄버거 메뉴 아이콘 -->
+                </div>
+            </div>
+        </div>
+        <!-- 모바일 슬라이드 메뉴 -->
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Posts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+            <aside class="left-sidebar">
+                <!-- Left sidebar reserved for future features -->
+            </aside>
+
+            <article class="post-content">
+                <div class="post-header">
+                    <h1 class="lang-content" data-lang-en="Posts List" data-lang-kr="글 목록">글 목록</h1>
+                </div>
+                <div class="post-header-lang">
+                    <!-- 한/영 전환 버튼 -->
+                    <img id="toggle-language" src="images/korea-flag.png" alt="Toggle Language" onclick="toggleLanguage()">
+                </div>
+    
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>순번</th>
+                            <th>글 제목</th>
+                        </tr>
+                    </thead>
+                    <tbody id="post-list">
+                        <!-- JavaScript에서 동적으로 생성될 목록 -->
+                    </tbody>
+                </table>
+
+
+                <!-- Add more paragraphs or sections as needed -->
+
+                <!-- 배너 슬라이더 -->
+                <div class="banner-container">
+                    <div class="banner-slide fade">
+                        <img src="images/banner1.jpg" alt="Banner 1">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <div class="banner-slide fade">
+                        <img src="images/banner2.jpg" alt="Banner 2">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <div class="banner-slide fade">
+                        <img src="images/banner3.jpg" alt="Banner 3">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <div class="banner-slide fade">
+                        <img src="images/banner4.jpg" alt="Banner 3">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <!-- 순번을 표시하는 동그라미들 -->
+                    <div class="banner-dots">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="right-sidebar">
+                <div class="profile-info">
+                    <!-- Profile information area -->
+                    <h2>About Me</h2>
+                    <p>Short bio or introduction about the blog author.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 MUTEX. All rights reserved.</p>
+        <p>Designed by MutexLock</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/list.js"></script>
+</body>
+</html>
