@@ -95,22 +95,12 @@ function toggleLanguage() {
     });
 
     // 버튼 이미지 전환
-    try {
-        if (currentLanguage === 'KR') {
-            languageButton.setAttribute('src', '../images/usa-flag.png');
-            localStorage.setItem('language', 'EN');
-        } else {
-            languageButton.setAttribute('src', '../images/korea-flag.png');
-            localStorage.setItem('language', 'KR');
-        }
-    } catch (error) {
-        if (currentLanguage === 'KR') {
-            languageButton.setAttribute('src', 'images/usa-flag.png');
-            localStorage.setItem('language', 'EN');
-        } else {
-            languageButton.setAttribute('src', 'images/korea-flag.png');
-            localStorage.setItem('language', 'KR');
-        }
+    if (currentLanguage === 'KR') {
+        languageButton.setAttribute('src', '../images/usa-flag.png');
+        localStorage.setItem('language', 'EN');
+    } else {
+        languageButton.setAttribute('src', '../images/korea-flag.png');
+        localStorage.setItem('language', 'KR');
     }
 }
 
