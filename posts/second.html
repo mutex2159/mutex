@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="나의 첫 번째 테스트 포스팅">
+    <meta name="keywords" content="첫, 번, 째">
+    <meta name="robots" content="index, follow">
+
+    <title>MUTEX</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/mode.css">
+
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$$','$$'], ['\\(','\\)']], displayMath: [['$$$', '$$$']]}
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+    <!-- Code Highlight -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/dark.min.css">-->
+    <link rel="stylesheet" href="../styles/dark.min.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PHHZVH90BE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-PHHZVH90BE');
+    </script>
+
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="navbar">
+            <img src="../images/logo.png" alt="Logo" class="logo">
+            <h1>MUTEX</h1>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Posts</a></li>
+                </ul>
+            </nav>
+            <div class="desktop-mode-toggle">
+                <button id="modeToggle" onclick="toggleMode()">
+                    <img src="../images/light-dark.png" alt="light-dark">
+                </button>
+            </div>
+            <!-- 모바일 메뉴 버튼 -->
+            <div class="mobile-menu-button-container">
+                <button id="modeToggleMobile" onclick="toggleMode()">
+                    <img src="../images/light-dark.png" alt="light-dark">
+                </button>
+                <div class="mobile-menu-button" onclick="toggleMobileMenu()">
+                    &#9776; <!-- 햄버거 메뉴 아이콘 -->
+                </div>
+            </div>
+        </div>
+        <!-- 모바일 슬라이드 메뉴 -->
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Posts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+            <aside class="left-sidebar">
+                <!-- Left sidebar reserved for future features -->
+            </aside>
+
+            <article class="post-content">
+                <div class="post-header">
+                    <h1 class="lang-content"
+                        data-lang-en="Measuring Distance with Sound: The Magic of Ultrasonic Sensors and Arduino"
+                        data-lang-kr="소리를 이용한 거리 측정: 초음파 센서와 아두이노의 만남">소리를 이용한 거리 측정: 초음파 센서와 아두이노의 만남</h1>
+                </div>
+                <div class="post-header-lang">
+                    <!-- 한/영 전환 버튼 -->
+                    <img id="toggle-language" src="../images/korea-flag.png" alt="Toggle Language"
+                        onclick="toggleLanguage()">
+                </div>
+
+                <p class="lang-content"
+                    data-lang-en="An ultrasonic sensor is a device that measures distance by using sound waves. A common model, the HC-SR04, works by emitting high-frequency sound waves (ultrasound) from a transmitter and receiving the reflected waves back at a receiver. The sensor calculates the distance based on the time it takes for the sound wave to travel to the object and return."
+                    data-lang-kr="초음파 센서는 소리의 반사를 이용해 물체와의 거리를 측정하는 장치입니다. 일반적으로 사용되는 초음파 센서 중 하나는 HC-SR04 모델로, 송신부에서 고주파의 음파(초음파)를 발사한 뒤, 물체에 반사된 음파를 수신부에서 받아들여 거리를 측정합니다.">
+                    초음파 센서는 소리의 반사를 이용해 물체와의 거리를 측정하는 장치입니다. 일반적으로 사용되는 초음파 센서 중 하나는 HC-SR04 모델로, 송신부에서 고주파의 음파(초음파)를
+                    발사한 뒤, 물체에 반사된 음파를 수신부에서 받아들여 거리를 측정합니다.</p>
+
+                <p class="lang-content"
+                    data-lang-en="When the ultrasonic sensor receives a Trigger signal, it emits a sound wave, and the Echo pin receives the reflected wave. By calculating the time difference, the distance to the object can be determined."
+                    data-lang-kr="초음파 센서는 트리거(Trigger) 신호를 받으면 음파를 발사하고, 에코(Echo) 핀에서 반사된 신호를 수신합니다. 이 시간차를 계산해 물체와의 거리를 구할 수 있습니다.">
+                    초음파 센서는 트리거(Trigger) 신호를 받으면 음파를 발사하고, 에코(Echo) 핀에서 반사된 신호를 수신합니다. 이 시간차를 계산해 물체와의 거리를 구할 수 있습니다.
+                </p>
+
+                <p class="lang-content"
+                    data-lang-en="Ultrasound travels through the air at a constant speed of approximately 343 m/s (at 20°C). By measuring the time it takes for the sound wave to reach an object and reflect back, we can calculate the distance to the object. The basic formula for distance calculation is:"
+                    data-lang-kr="초음파는 공기 중에서 일정한 속도로 이동합니다. 이 속도는 약 343 m/s(20°C 기준)로, 초음파가 물체에 닿아 반사되어 다시 센서로 돌아오는 데 걸리는 시간을 측정하면 물체와의 거리를 계산할 수 있습니다. 기본적으로 거리 계산은 다음 수식을 통해 이루어집니다:">
+                    초음파는 공기 중에서 일정한 속도로 이동합니다. 이 속도는 약 343 m/s(20°C 기준)로, 초음파가 물체에 닿아 반사되어 다시 센서로 돌아오는 데 걸리는 시간을 측정하면
+                    물체와의 거리를 계산할 수 있습니다. 기본적으로 거리 계산은 다음 수식을 통해 이루어집니다:</p>
+
+                $$$
+                d = \frac{t \times v}{2}
+                $$$
+
+                <p class="lang-content" data-lang-en="$$d$$: Distance between the object and the sensor (meters)"
+                    data-lang-kr="$$d$$: 물체와 센서 사이의 거리 (m)">$$ d $$: 물체와 센서 사이의 거리 (m)</p>
+
+                <p class="lang-content"
+                    data-lang-en="$$t$$: Time taken for the sound wave to travel to the object and back (seconds)"
+                    data-lang-kr="$$t$$: 음파가 송신되고 다시 수신될 때까지의 시간 (s)">$$ t $$: 음파가 송신되고 다시 수신될 때까지의 시간 (s)</p>
+
+                <p class="lang-content" data-lang-en="$$v$$: Speed of sound (343 m/s, can vary with temperature)"
+                    data-lang-kr="$$v$$: 음파의 속도 (343 m/s, 온도에 따라 달라짐)">$$ v $$: 음파의 속도 (343 m/s, 온도에 따라 달라짐)</p>
+
+                <p class="lang-content"
+                    data-lang-en="We divide by 2 because the sensor measures the round-trip time for the sound wave to travel to the object and back. The actual distance \( d \) is half of that round-trip distance."
+                    data-lang-kr="여기서 나누기 2를 하는 이유는 초음파가 물체에 닿았다가 되돌아오는 왕복 거리를 측정하기 때문입니다. 즉, 실제 거리 \( d \)는 왕복 시간에 기반해 계산됩니다.">
+                    여기서 나누기 2를 하는 이유는 초음파가 물체에 닿았다가 되돌아오는 왕복 거리를 측정하기 때문입니다. 즉, 실제 거리 $$ d $$는 왕복 시간에 기반해 계산됩니다.</p>
+
+                <p class="lang-content"
+                    data-lang-en="Let’s explore a simple way to measure distance using an ultrasonic sensor and an Arduino. The HC-SR04 sensor is connected to the Arduino, with the Trigger pin sending a sound wave and the Echo pin receiving the reflected wave. The time taken for the sound wave to return is then used to calculate the distance."
+                    data-lang-kr="아두이노를 사용해 초음파 센서로 거리를 측정하는 간단한 방법을 살펴보겠습니다. HC-SR04 센서를 아두이노에 연결하고, 트리거 핀을 통해 음파를 송신하고 에코 핀에서 수신된 시간을 바탕으로 거리를 계산합니다.">
+                    아두이노를 사용해 초음파 센서로 거리를 측정하는 간단한 방법을 살펴보겠습니다. HC-SR04 센서를 아두이노에 연결하고, 트리거 핀을 통해 음파를 송신하고 에코 핀에서 수신된
+                    시간을 바탕으로 거리를 계산합니다.</p>
+
+                <pre><code class="cpp">const int trigPin = 9;
+const int echoPin = 10;
+long duration;
+float distance;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
+
+void loop() {
+  // 트리거 핀에 10μs의 신호를 보내 음파를 발사
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
+  // 에코 핀에서 반환된 시간을 측정
+  duration = pulseIn(echoPin, HIGH);
+  
+  // 시간에 기반하여 거리 계산
+  distance = (duration * 0.0343) / 2;
+
+  // 측정된 거리 출력
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+  
+  delay(1000);  // 1초 대기
+}
+</code></pre>
+
+                <p class="lang-content"
+                    data-lang-en="In this code, a 10-microsecond pulse is sent to the Trigger pin to emit sound waves, and the Echo pin measures the time it takes for the reflected sound wave to return. The **pulseIn()** function measures the time (in microseconds) during which the Echo pin remains high. This time is then used to calculate the distance in centimeters."
+                    data-lang-kr="이 코드에서는 트리거 핀에 10마이크로초의 신호를 보내 음파를 발사한 후, 에코 핀에서 반환된 시간을 바탕으로 거리를 계산합니다. pulseIn() 함수는 에코 핀에서 고신호를 받는 데 걸린 시간을 마이크로초 단위로 반환합니다. 이 시간을 기반으로 거리 계산에 사용되는 단위는 cm입니다.">
+                    이 코드에서는 트리거 핀에 10마이크로초의 신호를 보내 음파를 발사한 후, 에코 핀에서 반환된 시간을 바탕으로 거리를 계산합니다. pulseIn() 함수는 에코 핀에서 고신호를
+                    받는 데 걸린 시간을 마이크로초 단위로 반환합니다. 이 시간을 기반으로 거리 계산에 사용되는 단위는 cm입니다.</p>
+
+                <!-- Add more paragraphs or sections as needed -->
+
+                <!-- 배너 슬라이더 -->
+                <div class=" banner-container">
+                    <div class="banner-slide fade">
+                        <img src="../images/banner1.jpg" alt="Banner 1">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <div class="banner-slide fade">
+                        <img src="../images/banner2.jpg" alt="Banner 2">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <div class="banner-slide fade">
+                        <img src="../images/banner3.jpg" alt="Banner 3">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <div class="banner-slide fade">
+                        <img src="../images/banner4.jpg" alt="Banner 3">
+                        <div class="banner-overlay"></div>
+                    </div>
+                    <!-- 순번을 표시하는 동그라미들 -->
+                    <div class="banner-dots">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                    </div>
+                </div>
+
+                <!-- comment section -->
+                <script src="https://giscus.app/client.js" data-repo="mutex2159/mutex" data-repo-id="R_kgDOMl63FQ"
+                    data-category="Announcements" data-category-id="DIC_kwDOMl63Fc4CiOZ9" data-mapping="pathname"
+                    data-strict="0" data-reactions-enabled="1" data-emit-metadata="1" data-input-position="top"
+                    data-theme="dark_dimmed" data-lang="ko" crossorigin="anonymous" async>
+                    </script>
+            </article>
+
+            <aside class="right-sidebar">
+                <div class="profile-info">
+                    <!-- Profile information area -->
+                    <h2>About Me</h2>
+                    <p>Short bio or introduction about the blog author.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 MUTEX. All rights reserved.</p>
+        <p>Designed by MutexLock</p>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>
